@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-wycbvaoa#9%#vzzo=pswa%r3e$!s50y6ti9-%p9-l%_3osy-3a
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['saffron-flame.onrender.com']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
