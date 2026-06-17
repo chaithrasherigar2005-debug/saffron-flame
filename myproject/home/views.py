@@ -22,13 +22,16 @@ import re
 def home(request):
     return render(request, 'index.html')
 
+from django.contrib.auth.decorators import login_required
+
+@login_required
 def reservation(request):
 
     if request.method == 'POST':
 
         Reservation.objects.create(
 
-            user=request.user,
+            user=request.user._wrapped if hasattr(request.user, "_wrapped") else request.user,
 
             seat_number=request.POST['seat_number'],
 
