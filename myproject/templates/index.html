@@ -1,0 +1,1059 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Saffron Flame</title>
+
+  <!-- GOOGLE FONTS -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- FONT AWESOME -->
+  <link rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+
+  <style>
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:'Poppins',sans-serif;
+      scroll-behavior:smooth;
+    }
+
+    body{
+      background:#0d0d0d;
+      color:white;
+      overflow-x:hidden;
+    }
+
+    /* SCROLLBAR */
+
+    ::-webkit-scrollbar{
+      width:10px;
+    }
+
+    ::-webkit-scrollbar-thumb{
+      background:#ff3c3c;
+      border-radius:10px;
+    }
+
+    /* HEADER */
+
+    header{
+      width:100%;
+      padding:18px 8%;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      position:fixed;
+      top:0;
+      z-index:1000;
+      background:rgba(0,0,0,0.5);
+      backdrop-filter:blur(12px);
+      border-bottom:1px solid rgba(255,255,255,0.1);
+    }
+
+    .logo{
+      font-size:34px;
+      font-weight:700;
+      color:#ff3c3c;
+      letter-spacing:1px;
+    }
+
+    nav ul{
+      display:flex;
+      gap:30px;
+      list-style:none;
+    }
+
+    nav ul li a{
+      text-decoration:none;
+      color:white;
+      font-size:17px;
+      transition:0.3s;
+      position:relative;
+    }
+
+    nav ul li a::after{
+      content:'';
+      width:0%;
+      height:2px;
+      background:#ff3c3c;
+      position:absolute;
+      left:0;
+      bottom:-5px;
+      transition:0.3s;
+    }
+
+    nav ul li a:hover::after{
+      width:100%;
+    }
+
+    .header-buttons{
+      display:flex;
+      gap:15px;
+    }
+
+    .btn{
+      padding:12px 22px;
+      border:none;
+      border-radius:12px;
+      cursor:pointer;
+      font-weight:600;
+      transition:0.3s;
+    }
+
+    .login-btn{
+      background:transparent;
+      border:2px solid #ff3c3c;
+      color:white;
+    }
+
+    .login-btn:hover{
+      background:#ff3c3c;
+    }
+
+    .reserve-btn{
+      background:#ff3c3c;
+      color:white;
+      box-shadow:0 0 20px rgba(255,60,60,0.4);
+    }
+
+    .reserve-btn:hover{
+      transform:translateY(-3px);
+    }
+
+    /* HERO SECTION */
+
+    .hero{
+      height:100vh;
+      background:
+      linear-gradient(rgba(0,0,0,0.65),rgba(0,0,0,0.7)),
+      url("https://images.unsplash.com/photo-1504674900247-0877df9cc836");
+      background-size:cover;
+      background-position:center;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      padding:20px;
+      position:relative;
+    }
+
+    .hero-content{
+      max-width:900px;
+      animation:fadeIn 1.2s ease;
+    }
+
+    .hero-content h1{
+      font-size:75px;
+      margin-bottom:25px;
+      color:#fff;
+      line-height:1.2;
+    }
+
+    .hero-content span{
+      color:#ff3c3c;
+      text-shadow:0 0 20px rgba(255,0,0,0.6);
+    }
+
+    .hero-content p{
+      font-size:22px;
+      color:#ddd;
+      line-height:1.8;
+      margin-bottom:35px;
+    }
+
+    .hero-buttons{
+      display:flex;
+      justify-content:center;
+      gap:20px;
+      flex-wrap:wrap;
+    }
+
+    .hero-btn{
+      padding:16px 35px;
+      border:none;
+      border-radius:14px;
+      font-size:18px;
+      cursor:pointer;
+      transition:0.3s;
+      font-weight:600;
+    }
+
+    .hero-book{
+      background:#ff3c3c;
+      color:white;
+      box-shadow:0 0 20px rgba(255,0,0,0.4);
+    }
+
+    .hero-book:hover{
+      transform:scale(1.05);
+    }
+
+    .hero-menu{
+      background:white;
+      color:black;
+    }
+
+    .hero-menu:hover{
+      transform:scale(1.05);
+    }
+
+    /* STATS */
+
+    .stats{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+      gap:25px;
+      padding:70px 8%;
+      background:#121212;
+    }
+
+    .stat-box{
+      background:#1b1b1b;
+      padding:35px;
+      border-radius:20px;
+      text-align:center;
+      transition:0.3s;
+      border:1px solid rgba(255,255,255,0.05);
+    }
+
+    .stat-box:hover{
+      transform:translateY(-8px);
+      box-shadow:0 0 20px rgba(255,0,0,0.2);
+    }
+
+    .stat-box i{
+      font-size:45px;
+      color:#ff3c3c;
+      margin-bottom:20px;
+    }
+
+    .stat-box h2{
+      font-size:38px;
+      margin-bottom:10px;
+    }
+
+    .stat-box p{
+      color:#bbb;
+    }
+
+    /* SECTION TITLE */
+
+    .section-title{
+      text-align:center;
+      font-size:50px;
+      margin-bottom:60px;
+      color:#ff3c3c;
+    }
+
+    /* FEATURES */
+
+    .features{
+      padding:90px 8%;
+    }
+
+    .feature-container{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+      gap:30px;
+    }
+
+    .feature-card{
+      background:#1a1a1a;
+      border-radius:25px;
+      overflow:hidden;
+      transition:0.4s;
+      border:1px solid rgba(255,255,255,0.08);
+    }
+
+    .feature-card:hover{
+      transform:translateY(-10px);
+      box-shadow:0 0 25px rgba(255,0,0,0.3);
+    }
+
+    .feature-card img{
+      width:100%;
+      height:230px;
+      object-fit:cover;
+    }
+
+    .feature-content{
+      padding:25px;
+    }
+
+    .feature-content h3{
+      font-size:28px;
+      color:#ff3c3c;
+      margin-bottom:15px;
+    }
+
+    .feature-content p{
+      color:#ccc;
+      line-height:1.7;
+    }
+
+    /* MENU */
+
+    .menu{
+      padding:90px 8%;
+      background:#121212;
+    }
+
+    .menu-container{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+      gap:30px;
+    }
+
+    .menu-card{
+      background:#1c1c1c;
+      border-radius:25px;
+      overflow:hidden;
+      transition:0.4s;
+    }
+
+    .menu-card:hover{
+      transform:scale(1.03);
+    }
+
+    .menu-card img{
+      width:100%;
+      height:250px;
+      object-fit:cover;
+    }
+
+    .menu-info{
+      padding:25px;
+    }
+
+    .menu-info h3{
+      color:#ff3c3c;
+      font-size:28px;
+      margin-bottom:12px;
+    }
+
+    .menu-info p{
+      color:#ccc;
+      margin-bottom:15px;
+      line-height:1.6;
+    }
+
+    .price-row{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+    }
+
+    .price{
+      font-size:24px;
+      font-weight:600;
+    }
+
+    .order-btn{
+      padding:10px 18px;
+      border:none;
+      border-radius:10px;
+      background:#ff3c3c;
+      color:white;
+      cursor:pointer;
+      transition:0.3s;
+    }
+
+    .order-btn:hover{
+      background:#d60000;
+    }
+
+    /* TESTIMONIALS */
+
+    .testimonials{
+      padding:90px 8%;
+    }
+
+    .testimonial-container{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+      gap:30px;
+    }
+
+    .testimonial-card{
+      background:#1a1a1a;
+      padding:35px;
+      border-radius:25px;
+      transition:0.3s;
+    }
+
+    .testimonial-card:hover{
+      transform:translateY(-10px);
+    }
+
+    .testimonial-card img{
+      width:80px;
+      height:80px;
+      border-radius:50%;
+      object-fit:cover;
+      margin-bottom:20px;
+      border:3px solid #ff3c3c;
+    }
+
+    .testimonial-card h3{
+      color:#ff3c3c;
+      margin-bottom:10px;
+    }
+
+    .testimonial-card p{
+      color:#ccc;
+      line-height:1.7;
+    }
+
+    /* CTA */
+
+    .cta{
+      padding:100px 8%;
+      text-align:center;
+      background:
+      linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.7)),
+      url("https://images.unsplash.com/photo-1414235077428-338989a2e8c0");
+      background-size:cover;
+      background-position:center;
+    }
+
+    .cta h1{
+      font-size:60px;
+      margin-bottom:20px;
+      color:#ff3c3c;
+    }
+
+    .cta p{
+      color:#ddd;
+      font-size:22px;
+      margin-bottom:35px;
+    }
+
+    .cta button{
+      padding:18px 40px;
+      border:none;
+      border-radius:14px;
+      background:#ff3c3c;
+      color:white;
+      font-size:20px;
+      cursor:pointer;
+      transition:0.3s;
+    }
+
+    .cta button:hover{
+      transform:scale(1.05);
+    }
+
+    /* FOOTER */
+
+    footer{
+      background:#090909;
+      padding:60px 8%;
+      text-align:center;
+    }
+
+    footer h2{
+      font-size:38px;
+      color:#ff3c3c;
+      margin-bottom:20px;
+    }
+
+    footer p{
+      color:#aaa;
+      margin:10px 0;
+    }
+
+    .social-icons{
+      margin-top:20px;
+      display:flex;
+      justify-content:center;
+      gap:20px;
+    }
+
+    .social-icons i{
+      font-size:22px;
+      width:50px;
+      height:50px;
+      background:#1a1a1a;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      border-radius:50%;
+      cursor:pointer;
+      transition:0.3s;
+    }
+
+    .social-icons i:hover{
+      background:#ff3c3c;
+      transform:translateY(-5px);
+    }
+
+    @keyframes fadeIn{
+      from{
+        opacity:0;
+        transform:translateY(30px);
+      }
+
+      to{
+        opacity:1;
+        transform:translateY(0);
+      }
+    }
+
+    @media(max-width:768px){
+
+      header{
+        flex-direction:column;
+        gap:20px;
+      }
+
+      nav ul{
+        flex-wrap:wrap;
+        justify-content:center;
+      }
+
+      .hero-content h1{
+        font-size:45px;
+      }
+
+      .hero-content p{
+        font-size:18px;
+      }
+
+      .section-title{
+        font-size:38px;
+      }
+
+      .cta h1{
+        font-size:42px;
+      }
+    }
+    .profile-btn{
+
+    position:fixed;
+
+    top:20px;
+
+    right:20px;
+
+    width:50px;
+
+    height:50px;
+
+    border-radius:50%;
+
+    background:linear-gradient(to right,#ff512f,#dd2476);
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    text-decoration:none;
+
+    color:white;
+
+    font-size:20px;
+
+    box-shadow:0 0 20px rgba(255,82,82,0.5);
+
+    transition:0.3s;
+
+    z-index:999;
+}
+
+.profile-btn:hover{
+
+    transform:scale(1.08);
+
+    box-shadow:0 0 30px rgba(255,82,82,0.8);
+}
+
+  </style>
+</head>
+
+<body>
+  {% if messages %}
+
+    <script>
+
+        sessionStorage.removeItem("date");
+        sessionStorage.removeItem("time");
+        sessionStorage.removeItem("guests");
+        sessionStorage.removeItem("request");
+        sessionStorage.removeItem("selectedSeat");
+
+    </script>
+
+    {% for message in messages %}
+
+        <script>
+            alert("{{ message }}");
+        </script>
+
+    {% endfor %}
+
+{% endif %}
+
+  {% if success %}
+
+<div style="
+    background:#28a745;
+    color:white;
+    padding:15px;
+    text-align:center;
+    font-weight:bold;
+">
+
+    {{ success }}
+
+</div>
+
+{% endif %}
+  {% if messages %}
+
+    {% for message in messages %}
+
+        <div style="
+            background:#28a745;
+            color:white;
+            padding:15px;
+            text-align:center;
+            font-size:18px;
+            font-weight:bold;
+        ">
+
+            {{ message }}
+
+        </div>
+
+    {% endfor %}
+
+{% endif %}
+
+  <!-- HEADER -->
+
+  <header>
+
+    <div class="logo">🍽️ Saffron Flame</div>
+    <nav>
+  <ul>
+
+    <li>
+      <a href="/">
+        Home
+      </a>
+    </li>
+
+    <li>
+      <a href="/menu/">
+        Menu
+      </a>
+    </li>
+
+    <li>
+      <a href="/reservation/">
+        Reservation
+      </a>
+    </li>
+
+    <li>
+      <a href="/contact/">
+          Contact
+      </a>
+      
+    </li>
+
+  </ul>
+</nav>
+{% if user.is_authenticated %}
+<a href="/profile/" class="profile-btn">
+  👤
+</a>
+{% endif %}  
+
+    <div class="header-buttons">
+      {% if user.is_authenticated %}
+
+    <a href="/logout/">
+        <button class="btn login-btn">
+            Logout
+        </button>
+    </a>
+
+{% else %}
+
+    <a href="/login/">
+        <button class="btn login-btn">
+            Login
+        </button>
+    </a>
+
+{% endif %}
+      
+      <a href="/reservation/">
+      <button class="btn reserve-btn">
+        Book Now
+      </button>
+      </a>
+      
+      <a href="/my-orders/">
+        <button class="btn login-btn">
+          📦 My Orders
+        </button>
+      </a>
+
+
+    </div>
+
+  </header>
+
+  <!-- HERO -->
+
+  <section class="hero">
+
+    <div class="hero-content">
+
+      <h1>
+        Experience <span>Luxury Dining</span> & Delicious Food Moments
+      </h1>
+
+      <p>
+        Enjoy mouth-watering dishes, elegant ambience,
+        and seamless online table reservations for every occasion.
+      </p>
+
+      <div class="hero-buttons">
+        <a href="/reservation/">
+
+        <button class="hero-btn hero-book">
+          Reserve Table
+        </button>
+        </a>
+        <a href="/dining-option/">
+          <button class="hero-btn hero-menu">
+            Explore Menu
+          </button>
+        </a>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- STATS -->
+
+  <section class="stats">
+
+    <div class="stat-box">
+      <i class="fa-solid fa-users"></i>
+      <h2>25K+</h2>
+      <p>Happy Customers</p>
+    </div>
+
+    <div class="stat-box">
+      <i class="fa-solid fa-utensils"></i>
+      <h2>120+</h2>
+      <p>Delicious Dishes</p>
+    </div>
+
+    <div class="stat-box">
+      <i class="fa-solid fa-chair"></i>
+      <h2>500+</h2>
+      <p>Seats Reserved Daily</p>
+    </div>
+
+    <div class="stat-box">
+      <i class="fa-solid fa-star"></i>
+      <h2>4.9</h2>
+      <p>Customer Rating</p>
+    </div>
+
+  </section>
+
+  <!-- FEATURES -->
+
+  <section class="features">
+
+    <h1 class="section-title">
+      Why People Love Us
+    </h1>
+
+    <div class="feature-container">
+
+      <div class="feature-card">
+
+        <img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1">
+
+        <div class="feature-content">
+
+          <h3>🔥 Premium Grills</h3>
+
+          <p>
+            Freshly prepared dishes and live grilling experience.
+          </p>
+
+        </div>
+
+      </div>
+
+      <div class="feature-card">
+
+        <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4">
+
+        <div class="feature-content">
+
+          <h3>🪑 Smart Reservations</h3>
+
+          <p>
+            Reserve your table online in seconds with ease.
+          </p>
+
+        </div>
+
+      </div>
+
+      <div class="feature-card">
+
+        <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0">
+
+        <div class="feature-content">
+
+          <h3>✨ Luxury Ambience</h3>
+
+          <p>
+            Elegant interiors perfect for parties and family dinners.
+          </p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- MENU -->
+
+  <section class="menu">
+
+    <h1 class="section-title">
+      Popular Dishes
+    </h1>
+
+    <div class="menu-container">
+
+      <!-- BURGER -->
+
+      <div class="menu-card">
+
+        <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd">
+
+        <div class="menu-info">
+
+          <h3>BBQ Burger</h3>
+
+          <p>
+            Juicy grilled burger with smoky BBQ sauce.
+          </p>
+
+          <div class="price-row">
+
+            <div class="price">₹499</div>
+
+            <button class="order-btn">
+              Order
+            </button>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- PIZZA -->
+
+      <div class="menu-card">
+
+        <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591">
+
+        <div class="menu-info">
+
+          <h3>Cheese Pizza</h3>
+
+          <p>
+            Fresh cheesy pizza loaded with delicious toppings.
+          </p>
+
+          <div class="price-row">
+
+            <div class="price">₹399</div>
+
+            <button class="order-btn">
+              Order
+            </button>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- SEAFOOD -->
+
+      <div class="menu-card">
+
+        <img src="https://images.unsplash.com/photo-1559847844-5315695dadae">
+
+        <div class="menu-info">
+
+          <h3>Seafood Platter</h3>
+
+          <p>
+            Fresh seafood cooked with premium spices and herbs.
+          </p>
+
+          <div class="price-row">
+
+            <div class="price">₹699</div>
+
+            <button class="order-btn">
+              Order
+            </button>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- TESTIMONIALS -->
+
+  <section class="testimonials">
+
+    <h1 class="section-title">
+      What Customers Say
+    </h1>
+
+    <div class="testimonial-container">
+
+      <div class="testimonial-card">
+
+        <img src="https://randomuser.me/api/portraits/women/44.jpg">
+
+        <h3>Priya Sharma</h3>
+
+        <p>
+          Amazing food and smooth online reservation system.
+          Loved the ambience and dining experience.
+        </p>
+
+      </div>
+
+      <div class="testimonial-card">
+
+        <img src="https://randomuser.me/api/portraits/men/32.jpg">
+
+        <h3>Rahul Mehta</h3>
+
+        <p>
+          One of the best family dining restaurants.
+          Booking seats online was super easy.
+        </p>
+
+      </div>
+
+      <div class="testimonial-card">
+
+        <img src="https://randomuser.me/api/portraits/women/65.jpg">
+
+        <h3>Ananya Rao</h3>
+
+        <p>
+          Delicious dishes, quick service, and beautiful interiors.
+          Highly recommended.
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- CTA -->
+
+  <section class="cta">
+
+    <h1>Reserve Your Dining Seat Today</h1>
+
+    <p>
+      Skip the waiting queue and enjoy premium dining instantly.
+    </p>
+    <a href="/reservation/">
+    <button>
+      Book Your Table
+    </button>
+    </a>
+
+  </section>
+
+  <!-- FOOTER -->
+
+  <footer id="contact">
+
+    <h2>🍽️ Saffron Flame</h2>
+
+    <p>Email: saffronflame@gmail.com</p>
+
+    <p>Phone: +91 9876543210</p>
+
+    <p>Open Daily: 11:00 AM - 11:00 PM</p>
+
+    <div class="social-icons">
+
+      <i class="fa-brands fa-facebook-f"></i>
+      <i class="fa-brands fa-instagram"></i>
+      <i class="fa-brands fa-twitter"></i>
+      <i class="fa-brands fa-youtube"></i>
+
+    </div>
+
+    <p style="margin-top:25px;">
+      © 2026 Saffron Flame. All Rights Reserved.
+    </p>
+
+  </footer>
+{% if messages %}
+
+<script>
+
+sessionStorage.removeItem("selectedSeat");
+sessionStorage.removeItem("date");
+sessionStorage.removeItem("time");
+sessionStorage.removeItem("guests");
+sessionStorage.removeItem("request");
+
+</script>
+
+{% for message in messages %}
+
+<script>
+alert("{{ message }}");
+</script>
+
+{% endfor %}
+
+{% endif %}
+  
+</body>
+</html>

@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Pay At Restaurant | Saffron Flame</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+
+    min-height:100vh;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    background:
+    linear-gradient(rgba(0,0,0,0.75),rgba(0,0,0,0.85)),
+    url("https://images.unsplash.com/photo-1517248135467-4c7edcad34c4");
+
+    background-size:cover;
+    background-position:center;
+}
+
+.payment-card{
+
+    width:90%;
+    max-width:650px;
+
+    background:rgba(20,20,20,0.82);
+
+    backdrop-filter:blur(14px);
+
+    border-radius:30px;
+
+    padding:45px;
+
+    color:white;
+
+    text-align:center;
+
+    border:1px solid rgba(255,255,255,0.08);
+
+    box-shadow:0 0 35px rgba(255,0,0,0.25);
+}
+
+.logo{
+
+    font-size:42px;
+
+    color:#ff4d4d;
+
+    margin-bottom:10px;
+}
+
+.heading{
+
+    font-size:34px;
+
+    margin-bottom:25px;
+}
+
+.amount-box{
+
+    background:rgba(255,255,255,0.05);
+
+    border-radius:20px;
+
+    padding:25px;
+
+    margin:25px 0;
+}
+
+.amount-box h3{
+
+    color:#bbb;
+
+    font-size:16px;
+
+    margin-bottom:10px;
+}
+
+.amount{
+
+    font-size:42px;
+
+    font-weight:700;
+
+    color:#ff4d4d;
+}
+
+.info-box{
+
+    background:rgba(255,255,255,0.05);
+
+    border-radius:18px;
+
+    padding:18px;
+
+    margin-top:18px;
+
+    text-align:left;
+}
+
+.info-box h4{
+
+    color:#ff7b54;
+
+    margin-bottom:8px;
+}
+
+.info-box p{
+
+    color:#ddd;
+
+    line-height:1.8;
+}
+
+.note{
+
+    margin-top:25px;
+
+    color:#ffd166;
+
+    line-height:1.8;
+}
+
+.confirm-btn{
+
+    width:100%;
+
+    margin-top:35px;
+
+    padding:16px;
+
+    border:none;
+
+    border-radius:16px;
+
+    font-size:18px;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    background:linear-gradient(
+        to right,
+        #ff2e2e,
+        #b30000
+    );
+
+    color:white;
+
+    transition:0.3s;
+}
+
+.confirm-btn:hover{
+
+    transform:translateY(-3px);
+
+    box-shadow:0 0 25px rgba(255,0,0,0.5);
+}
+
+.back-btn{
+
+    display:inline-block;
+
+    margin-top:20px;
+
+    color:#ccc;
+
+    text-decoration:none;
+}
+
+.back-btn:hover{
+
+    color:white;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="payment-card">
+
+    <div class="logo">
+        🍽️ Saffron Flame
+    </div>
+
+    <h2 class="heading">
+        Pay At Restaurant
+    </h2>
+
+    <div class="amount-box">
+
+        <h3>Total Amount Payable</h3>
+
+        <div class="amount">
+            ₹{{ total }}
+        </div>
+
+    </div>
+
+    <div class="info-box">
+
+        <h4>📍 Restaurant Address</h4>
+
+        <p>
+            Saffron Flame Restaurant<br>
+            MG Road, Mangalore<br>
+            Karnataka - 575001
+        </p>
+
+    </div>
+
+    <div class="info-box">
+
+        <h4>💳 Payment Method</h4>
+
+        <p>
+            Pay At Restaurant Counter
+        </p>
+
+    </div>
+
+    <div class="note">
+
+        ⚠ Please proceed to the cash counter for payment through cash.
+
+    </div>
+
+    <form method="POST">
+
+        {% csrf_token %}
+    </form>
+
+    <a href="/" class="back-btn">
+
+        ← Back To Home
+
+    </a>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>My Orders | Saffron Flame</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+
+    min-height:100vh;
+
+    background:
+    linear-gradient(rgba(0,0,0,0.82),rgba(0,0,0,0.88)),
+    url("https://images.unsplash.com/photo-1517248135467-4c7edcad34c4");
+
+    background-size:cover;
+    background-position:center;
+    background-attachment:fixed;
+
+    color:white;
+
+    padding:40px;
+}
+
+.header{
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    margin-bottom:50px;
+}
+
+.logo{
+
+    font-size:40px;
+    font-weight:700;
+
+    color:#ff4d4d;
+}
+
+.home-btn{
+
+    padding:12px 25px;
+
+    border-radius:12px;
+
+    text-decoration:none;
+
+    color:white;
+
+    background:linear-gradient(to right,#ff2e2e,#b30000);
+}
+
+.page-title{
+
+    text-align:center;
+
+    margin-bottom:40px;
+}
+
+.page-title h1{
+
+    font-size:55px;
+
+    color:#ff4d4d;
+}
+
+.page-title p{
+
+    color:#ccc;
+}
+
+.section-title{
+
+    font-size:28px;
+
+    color:#ff6b6b;
+
+    margin-bottom:20px;
+}
+
+.order-card{
+
+    background:rgba(255,255,255,0.08);
+
+    backdrop-filter:blur(15px);
+
+    border-radius:25px;
+
+    padding:25px;
+
+    margin-bottom:25px;
+
+    border:1px solid rgba(255,255,255,0.08);
+}
+
+.order-top{
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    margin-bottom:20px;
+}
+
+.order-id{
+
+    font-size:22px;
+    font-weight:600;
+}
+
+.paid{
+
+    background:#00c853;
+
+    padding:8px 15px;
+
+    border-radius:30px;
+}
+
+.unpaid{
+
+    background:#ff5252;
+
+    padding:8px 15px;
+
+    border-radius:30px;
+}
+
+.info{
+
+    margin:10px 0;
+    color:#ddd;
+}
+
+.total{
+
+    font-size:26px;
+    font-weight:700;
+
+    color:#ff4d4d;
+
+    margin-top:15px;
+}
+
+.empty-box{
+
+    background:rgba(255,255,255,0.08);
+
+    padding:50px;
+
+    text-align:center;
+
+    border-radius:25px;
+}
+
+.empty-box h2{
+
+    color:#ff4d4d;
+
+    margin-bottom:15px;
+}
+
+.empty-box p{
+
+    color:#ccc;
+
+    margin-bottom:20px;
+}
+
+.explore-btn{
+
+    padding:14px 30px;
+
+    border-radius:12px;
+
+    text-decoration:none;
+
+    color:white;
+
+    background:linear-gradient(to right,#ff2e2e,#b30000);
+}
+.order-header{
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    margin-bottom:20px;
+}
+
+.item-card{
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    background:rgba(255,255,255,0.05);
+
+    padding:15px;
+
+    border-radius:14px;
+
+    margin-top:12px;
+}
+
+.qty{
+
+    color:#bbb;
+
+    margin-top:5px;
+}
+
+.item-price{
+
+    color:#ff6b6b;
+
+    font-weight:700;
+
+    font-size:18px;
+}
+
+.order-details{
+
+    margin-top:20px;
+}
+
+.order-details p{
+
+    margin:10px 0;
+}
+
+.timer-box{
+
+    background:rgba(255,255,255,0.05);
+
+    padding:12px;
+
+    border-radius:12px;
+
+    text-align:center;
+
+    font-weight:600;
+
+    color:#ffd166;
+}
+
+.cancel-btn{
+
+    display:block;
+
+    width:100%;
+
+    text-align:center;
+
+    margin-top:20px;
+
+    padding:14px;
+
+    border-radius:14px;
+
+    text-decoration:none;
+
+    background:#ff3b30;
+
+    color:white;
+
+    font-weight:600;
+}
+
+.cancel-btn:hover{
+
+    background:#d90429;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="header">
+
+    <div class="logo">
+        🍽️ Saffron Flame
+    </div>
+
+    <a href="/" class="home-btn">
+        Back Home
+    </a>
+
+</div>
+
+<div class="page-title">
+
+    <h1>📦 My Orders</h1>
+
+    <p>
+        Track your current and previous orders
+    </p>
+
+</div>
+
+{% if orders %}
+
+<h2 class="section-title">
+    Current Orders
+</h2>
+{% for order in orders %}
+
+<div class="order-card">
+
+    <div class="order-header">
+
+        <h2>
+           Order #{{ forloop.counter }}
+        </h2>
+
+        {% if order.payment_status == "Paid Online" %}
+
+            <span class="paid">
+                Paid ✅
+            </span>
+
+        {% else %}
+
+            <span class="unpaid">
+                Unpaid 🧾
+            </span>
+
+        {% endif %}
+
+    </div>
+    {% if order.status != "Cancelled" %}
+
+<div class="timer-box">
+
+    ⏳ Time Left:
+    <span id="timer-{{ order.id }}"></span>
+
+</div>
+
+{% endif %}
+    
+
+    <h3 style="margin-top:20px;">
+        🍽 Ordered Items
+    </h3>
+
+    {% for item in order.items.all %}
+
+    <div class="item-card">
+
+        <div>
+
+            <strong>{{ item.item_name }}</strong>
+
+            <div class="qty">
+                Qty: {{ item.quantity }}
+            </div>
+
+        </div>
+
+        <div class="item-price">
+
+            ₹{{ item.price }}
+
+        </div>
+
+    </div>
+
+    {% endfor %}
+
+    <div class="order-details">
+        <p>
+
+Order Status:
+
+{% if order.status == "Cancelled" %}
+
+<span style="
+color:#ff4d4d;
+font-weight:bold;
+">
+
+Cancelled ❌
+
+</span>
+
+{% else %}
+
+<span style="
+color:#00ff7f;
+font-weight:bold;
+">
+
+Active ✅
+
+</span>
+
+{% endif %}
+
+</p>
+
+        <p>
+            📅 {{ order.created_at }}
+        </p>
+
+        <p>
+            🍴 {{ request.user.userprofile.dining_option }}
+        </p>
+
+        <div class="total">
+            Total: ₹{{ order.total_amount }}
+        </div>
+
+    </div>
+    {% if order.status != "Cancelled" %}
+
+<a href="{% url 'cancel_order' order.id %}"
+   class="cancel-btn"
+   id="cancel-btn-{{ order.id }}"
+   onclick="
+    if(confirm('Are you sure you want to cancel this order?')){
+        alert('Your amount will be refunded soon.');
+        return true;
+    }
+    return false;
+    ">
+
+   ❌ Cancel Order
+
+</a>
+
+{% endif %}
+    
+
+</div>
+
+{% endfor %}
+{% else %}
+
+<div class="empty-box">
+
+    <h2>
+        No Orders Yet
+    </h2>
+
+    <p>
+        Looks like you haven't ordered anything from Saffron Flame.
+    </p>
+
+    <a href="/menu/" class="explore-btn">
+        Explore Menu
+    </a>
+
+</div>
+
+{% endif %}
+{% for order in orders %}
+
+<script>
+
+let remaining = 300;
+
+const timer =
+document.getElementById(
+    "timer-{{ order.id }}"
+);
+
+const timerBox =
+timer.parentElement;
+
+const button =
+document.getElementById(
+    "cancel-btn-{{ order.id }}"
+);
+
+const interval =
+setInterval(function(){
+
+    let minutes =
+    Math.floor(
+        remaining / 60
+    );
+
+    let seconds =
+    remaining % 60;
+
+    timer.innerHTML =
+    minutes + "m " +
+    seconds.toString().padStart(2,'0') +
+    "s";
+
+    remaining--;
+
+    if(remaining < 0){
+
+        clearInterval(interval);
+
+        if(button){
+            button.style.display = "none";
+        }
+
+        if(timerBox){
+            timerBox.style.display = "none";
+        }
+
+    }
+
+},1000);
+
+</script>
+{% endfor %}
+
+
+
+</body>
+</html>

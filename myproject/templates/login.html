@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BBQ Nation Login</title>
+
+  <style>
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body{
+      height:100vh;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      background:
+      linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.7)),
+      url("https://images.unsplash.com/photo-1552566626-52f8b828add9");
+      background-size:cover;
+      background-position:center;
+    }
+
+    .login-container{
+      width:100%;
+      max-width:400px;
+      background:rgba(255,255,255,0.08);
+      backdrop-filter:blur(10px);
+      padding:40px;
+      border-radius:20px;
+      box-shadow:0 0 20px rgba(255,0,0,0.3);
+      text-align:center;
+      color:white;
+    }
+
+    .login-container h1{
+      margin-bottom:10px;
+      color:#ff4d4d;
+      font-size:35px;
+    }
+
+    .login-container p{
+      margin-bottom:30px;
+      color:#ddd;
+    }
+
+    .input-box{
+      margin-bottom:20px;
+      text-align:left;
+    }
+
+    .input-box label{
+      display:block;
+      margin-bottom:8px;
+      font-weight:bold;
+    }
+
+    .input-box input{
+      width:100%;
+      padding:14px;
+      border:none;
+      border-radius:10px;
+      outline:none;
+      font-size:15px;
+      background:rgba(255,255,255,0.15);
+      color:white;
+    }
+
+    .input-box input::placeholder{
+      color:#ddd;
+    }
+
+    .login-btn{
+      width:100%;
+      padding:14px;
+      border:none;
+      border-radius:10px;
+      background:#ff2e2e;
+      color:white;
+      font-size:18px;
+      cursor:pointer;
+      transition:0.3s;
+      font-weight:bold;
+    }
+
+    .login-btn:hover{
+      background:#cc0000;
+      transform:scale(1.02);
+    }
+
+    .extra-links{
+      margin-top:20px;
+      display:flex;
+      justify-content:space-between;
+      font-size:14px;
+    }
+
+    .extra-links a{
+      color:#ff9999;
+      text-decoration:none;
+      transition:0.3s;
+    }
+
+    .extra-links a:hover{
+      color:white;
+    }
+
+    .social-login{
+      margin-top:25px;
+    }
+
+    .social-login p{
+      margin-bottom:15px;
+      color:#ccc;
+    }
+
+    .social-buttons{
+      display:flex;
+      justify-content:center;
+    }
+
+    .social-btn{
+      padding:12px 18px;
+      border:none;
+      border-radius:10px;
+      cursor:pointer;
+      font-weight:bold;
+      transition:0.3s;
+      background:white;
+      color: black;
+    }
+
+
+    .social-btn:hover{
+      transform:scale(1.05);
+    }
+
+    @media(max-width:500px){
+
+      .login-container{
+        margin:20px;
+        padding:30px;
+      }
+
+    }
+
+    .success-box{
+
+    background:#28a745;
+
+    color:white;
+
+    padding:12px;
+
+    border-radius:10px;
+
+    margin-bottom:15px;
+
+    text-align:center;
+
+    font-weight:600;
+  
+  }
+
+  .error-box{
+
+    background:#ff4d4d;
+
+    color:white;
+
+    padding:12px;
+
+    border-radius:10px;
+
+    margin-bottom:15px;
+
+    text-align:center;
+
+    font-weight:600;
+  }
+
+  </style>
+</head>
+
+<body>
+
+  <div class="login-container">
+
+    <h1>🍽️ Saffron Flame</h1>
+
+    <p>Login to reserve your dining seats</p>
+    {% if messages %}
+
+    
+        {% for message in messages %}
+
+            <div class="success-box">
+
+              {{ message }}
+
+            </div>
+
+        {% endfor %}
+
+    {% endif %}
+
+    {% if error %}
+
+        <div class="error-box">
+
+            {{ error }}
+
+        </div>
+
+    {% endif %}
+
+    <form method="POST" autocomplete="off">
+
+  {% csrf_token %}
+
+  <div class="input-box">
+
+    <label>Email Address</label>
+
+    <input 
+      type="email"
+      name="email"
+      placeholder="Enter your email"
+      autocomplete="off"
+      required
+    >
+
+  </div>
+
+  <div class="input-box">
+
+    <label>Password</label>
+
+    <input 
+      type="password"
+      name="password"
+      placeholder="Enter your password"
+      autocomplete="new-password"
+      required
+    >
+
+  </div>
+
+  <button type="submit" class="login-btn">
+    Login
+  </button>
+
+</form>
+    
+
+    <div class="extra-links">
+
+      <a href="/forgot-password/">Forgot Password?</a>
+
+      <a href="/register/">Create Account</a>
+
+    </div>
+
+  </div>
+
+</body>
+</html>

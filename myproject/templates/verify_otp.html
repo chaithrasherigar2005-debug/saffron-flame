@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Verify OTP - Saffron Flame</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+}
+
+body{
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    background:
+    linear-gradient(
+        rgba(0,0,0,0.75),
+        rgba(0,0,0,0.75)
+    ),
+    url("https://images.unsplash.com/photo-1552566626-52f8b828add9");
+
+    background-size:cover;
+    background-position:center;
+}
+
+.otp-container{
+
+    width:100%;
+    max-width:450px;
+
+    background:rgba(255,255,255,0.08);
+
+    backdrop-filter:blur(10px);
+
+    padding:40px;
+
+    border-radius:20px;
+
+    box-shadow:
+    0 0 20px rgba(255,0,0,0.3);
+
+    text-align:center;
+
+    color:white;
+}
+
+h1{
+
+    color:#ff4d4d;
+
+    margin-bottom:10px;
+}
+
+.subtitle{
+
+    color:#ddd;
+
+    margin-bottom:25px;
+}
+
+.input-box{
+
+    margin-bottom:18px;
+
+    text-align:left;
+}
+
+.input-box label{
+
+    display:block;
+
+    margin-bottom:8px;
+
+    font-weight:bold;
+}
+
+.input-box input{
+
+    width:100%;
+
+    padding:14px;
+
+    border:none;
+
+    border-radius:10px;
+
+    outline:none;
+
+    background:
+    rgba(255,255,255,0.15);
+
+    color:white;
+}
+
+.input-box input::placeholder{
+
+    color:#ddd;
+}
+
+.verify-btn{
+
+    width:100%;
+
+    padding:14px;
+
+    border:none;
+
+    border-radius:10px;
+
+    background:#ff2e2e;
+
+    color:white;
+
+    font-size:18px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+    transition:0.3s;
+}
+
+.verify-btn:hover{
+
+    background:#cc0000;
+
+    transform:scale(1.02);
+}
+
+.error-box{
+
+    background:#ff4d4d;
+
+    padding:12px;
+
+    border-radius:10px;
+
+    margin-bottom:15px;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="otp-container">
+
+    <h1>🔐 Verify OTP</h1>
+
+    <p class="subtitle">
+        Enter the OTP sent to your email
+    </p>
+
+    {% if error %}
+
+    <div class="error-box">
+
+        {{ error }}
+
+    </div>
+
+    {% endif %}
+
+    <form method="POST">
+
+        {% csrf_token %}
+
+        <input
+            type="hidden"
+            name="email"
+            value="{{ email }}"
+        >
+
+        <div class="input-box">
+
+            <label>OTP</label>
+
+            <input
+                type="text"
+                name="otp"
+                placeholder="Enter OTP"
+                value="{{ otp }}"
+                required
+            >
+
+        </div>
+        {% if otp_verified %}
+        <div class="input-box">
+
+            <label>New Password</label>
+
+            <input
+                type="password"
+                name="new_password"
+                placeholder="Enter new password"
+                required
+            >
+
+        </div>
+
+        
+        <div class="input-box">
+
+            <label>Confirm Password</label>
+
+            <input
+                type="password"
+                name="confirm_password"
+                placeholder="Confirm password"
+                required
+            >
+
+        </div>
+        {% endif %}
+
+        {% if otp_verified %}
+
+        <button
+            type="submit"
+            class="verify-btn"
+        >
+            Update Password
+        </button>
+
+        {% else %}
+
+        <button
+            type="submit"
+            class="verify-btn"
+        >
+            Verify OTP
+        </button>
+
+        {% endif %}
+
+    </form>
+
+</div>
+
+</body>
+</html>

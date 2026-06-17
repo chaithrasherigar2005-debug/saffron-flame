@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Saffron Flame | Luxury Receipt</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:'Poppins',sans-serif;
+        }
+
+        body{
+
+            min-height:100vh;
+
+            display:flex;
+            justify-content:center;
+            align-items:center;
+
+            padding:40px;
+
+            background:
+            linear-gradient(rgba(0,0,0,0.82),rgba(0,0,0,0.88)),
+            url("https://images.unsplash.com/photo-1517248135467-4c7edcad34c4");
+
+            background-size:cover;
+            background-position:center;
+        }
+
+        .receipt-container{
+
+            width:100%;
+            max-width:850px;
+
+            background:rgba(20,20,20,0.82);
+
+            backdrop-filter:blur(14px);
+
+            border:1px solid rgba(255,255,255,0.08);
+
+            border-radius:28px;
+
+            overflow:hidden;
+
+            box-shadow:
+            0 10px 40px rgba(0,0,0,0.5),
+            0 0 30px rgba(255,70,70,0.15);
+
+            animation:fadeIn 1s ease;
+        }
+
+        .top-section{
+
+            padding:35px;
+
+            background:
+            linear-gradient(to right,#ff3c3c,#7a0000);
+
+            text-align:center;
+
+            position:relative;
+        }
+
+        .top-section h1{
+
+            font-size:40px;
+
+            color:white;
+
+            margin-bottom:10px;
+
+            letter-spacing:1px;
+        }
+
+        .top-section p{
+
+            color:#ffe7e7;
+
+            font-size:15px;
+        }
+
+        .receipt-body{
+
+            padding:35px;
+        }
+
+        .section-title{
+
+            color:#ff4d4d;
+
+            margin-bottom:20px;
+
+            font-size:22px;
+
+            font-weight:600;
+        }
+
+        .item{
+
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+
+            padding:18px;
+
+            margin-bottom:14px;
+
+            border-radius:16px;
+
+            background:rgba(255,255,255,0.05);
+
+            border:1px solid rgba(255,255,255,0.05);
+
+            transition:0.3s;
+        }
+
+        .item:hover{
+
+            transform:translateY(-2px);
+
+            background:rgba(255,255,255,0.08);
+        }
+
+        .item-name{
+
+            display:flex;
+            flex-direction:column;
+        }
+
+        .item-name strong{
+
+            color:white;
+
+             font-size:18px;
+
+            font-weight:700;
+}
+
+        .item-name span{
+
+            color:#aaa;
+
+            font-size:13px;
+        }
+
+        .item-price{
+
+            color:#ff6969;
+
+            font-weight:600;
+
+            font-size:18px;
+        }
+
+        .summary{
+
+            margin-top:30px;
+
+            padding:25px;
+
+            border-radius:20px;
+
+            background:rgba(255,255,255,0.04);
+
+            border:1px solid rgba(255,255,255,0.06);
+        }
+
+        .row{
+
+            display:flex;
+            justify-content:space-between;
+
+            margin:15px 0;
+
+            color:#eee;
+
+            font-size:16px;
+        }
+
+        .total{
+
+            margin-top:18px;
+
+            padding-top:18px;
+
+            border-top:1px solid rgba(255,255,255,0.1);
+
+            font-size:26px;
+
+            font-weight:700;
+
+            color:#ff4d4d;
+        }
+
+        .payment-box{
+
+            margin-top:35px;
+        }
+
+        .payment-box h2{
+
+            margin-bottom:20px;
+
+            color:white;
+
+            text-align:center;
+        }
+
+        .buttons{
+
+            display:flex;
+
+            gap:18px;
+            
+            width:100%;
+        }
+
+        .buttons a{
+            flex:1;
+            text-decoration:none;
+        }
+
+        .btn{
+
+            flex:1;
+
+            height:70px;
+
+            display:flex;
+            justify-content:center;
+            align-items:center;
+
+            text-decoration:none;
+
+            border-radius:16px;
+
+            font-size:17px;
+
+            font-weight:600;
+
+            transition:0.3s;
+        }
+
+        .online{
+
+            background:
+            linear-gradient(to right,#ff2e2e,#b30000);
+
+            color:white;
+
+            box-shadow:0 0 20px rgba(255,0,0,0.3);
+        }
+
+        .offline{
+
+            background:rgba(255,255,255,0.08);
+
+            color:white;
+
+            border:1px solid rgba(255,255,255,0.08);
+        }
+
+        .btn:hover{
+
+            transform:translateY(-3px) scale(1.02);
+        }
+
+        .footer{
+
+            margin-top:30px;
+
+            text-align:center;
+
+            color:#999;
+
+            font-size:14px;
+
+            line-height:1.7;
+        }
+
+        .thank-you{
+
+            font-size:22px;
+
+            color:#ff5a5a;
+
+            margin-bottom:8px;
+
+            font-weight:600;
+        }
+
+        @keyframes fadeIn{
+
+            from{
+                opacity:0;
+                transform:translateY(25px);
+            }
+
+            to{
+                opacity:1;
+                transform:translateY(0);
+            }
+
+        }
+
+        @media(max-width:700px){
+
+            .receipt-body{
+                padding:25px;
+            }
+
+            .top-section h1{
+                font-size:30px;
+            }
+
+            .buttons{
+                flex-direction:column;
+            }
+
+        }
+        .back-btn{
+
+    position:absolute;
+
+    top:20px;
+
+    left:20px;
+
+    padding:10px 20px;
+
+    border:none;
+
+    border-radius:10px;
+
+    background:#ff2e2e;
+
+    color:white;
+
+    cursor:pointer;
+
+    font-size:16px;
+}
+
+    </style>
+
+</head>
+
+<body>
+
+    <button
+    onclick="history.back()"
+    class="back-btn"
+>
+    ← Back
+</button>
+<div class="receipt-container">
+
+    <div class="top-section">
+
+        <h1>🍽️ Saffron Flame</h1>
+
+        <p>
+            Premium Dining • Luxury Experience • Delicious Memories
+        </p>
+
+    </div>
+
+    <div class="receipt-body">
+
+        <div class="section-title">
+            Your Order
+        </div>
+
+        {% for item in cart_items %}
+
+        <div class="item">
+
+            <div class="item-name">
+
+                <strong>{{ item.item.name }}</strong>
+
+                <span>Quantity: {{ item.quantity }}</span>
+
+            </div>
+
+            <div class="item-price">
+
+                ₹{{ item.item.price }}
+
+            </div>
+
+        </div>
+
+        {% endfor %}
+
+        <div class="summary">
+
+            <div class="row">
+
+                <span>Subtotal</span>
+
+                <span>₹{{ subtotal }}</span>
+
+            </div>
+
+            <div class="row">
+
+                <span>GST (5%)</span>
+
+                <span>₹{{ gst }}</span>
+
+            </div>
+
+            <div class="row">
+
+                <span>Service Charge (2%)</span>
+
+                <span>₹{{ service_tax }}</span>
+
+            </div>
+
+            <div class="row">
+
+                <span>
+                    Reservation Fee
+                </span>
+
+                <span>
+                     ₹{{ reservation_fee }}
+                </span>
+
+            </div>
+
+            <div class="row total">
+
+                <span>Total Amount</span>
+
+                <span>₹{{ total }}</span>
+
+            </div>
+
+        </div>
+
+        <div class="payment-box">
+
+            <h2>Select Payment Method</h2>
+            <div class="buttons">
+
+                <a href="/payment/" class="btn online">
+                    Pay Online 💳
+                </a>
+
+                {% if dining_option == "Online Delivery" %}
+
+        <a href="/cash-on-delivery/" class="btn offline">
+            Cash On Delivery 🚚
+        </a>
+
+        {% else %}
+
+        <a href="/pay-restaurant/" class="btn offline">
+            Pay At Restaurant 🧾
+        </a>
+
+        {% endif %}
+
+            </div>
+        
+
+        </div>
+
+        <div class="footer">
+
+            <div class="thank-you">
+                Thank You For Dining With Us ❤️
+            </div>
+
+            <p>
+                We hope your experience at Saffron Flame
+                was unforgettable and filled with delicious moments.
+            </p>
+
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>

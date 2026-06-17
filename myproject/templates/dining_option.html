@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Select Dining Option</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:'Poppins',sans-serif;
+        }
+
+        body{
+
+            height:100vh;
+
+            display:flex;
+            justify-content:center;
+            align-items:center;
+
+            background:
+            linear-gradient(rgba(0,0,0,0.75),rgba(0,0,0,0.85)),
+            url("https://images.unsplash.com/photo-1517248135467-4c7edcad34c4");
+
+            background-size:cover;
+            background-position:center;
+
+            color:white;
+        }
+
+        .container{
+
+            width:90%;
+            max-width:700px;
+
+            background:rgba(255,255,255,0.08);
+
+            backdrop-filter:blur(12px);
+
+            border-radius:30px;
+
+            padding:50px;
+
+            text-align:center;
+
+            box-shadow:0 0 30px rgba(255,0,0,0.2);
+        }
+
+        h1{
+
+            font-size:48px;
+
+            color:#ff4d4d;
+
+            margin-bottom:15px;
+        }
+
+        p{
+
+            color:#ddd;
+
+            margin-bottom:45px;
+
+            font-size:18px;
+        }
+
+        .option-container{
+
+            display:flex;
+
+            gap:30px;
+
+            justify-content:center;
+
+            flex-wrap:wrap;
+        }
+
+        .option-card{
+
+            flex:1;
+
+            min-width:240px;
+
+            background:rgba(255,255,255,0.05);
+
+            padding:35px;
+
+            border-radius:25px;
+
+            transition:0.3s;
+
+            border:1px solid rgba(255,255,255,0.08);
+        }
+
+        .option-card:hover{
+
+            transform:translateY(-8px);
+
+            box-shadow:0 0 25px rgba(255,0,0,0.3);
+        }
+
+        .option-card h2{
+
+            font-size:32px;
+
+            margin-bottom:15px;
+        }
+
+        .option-card p{
+
+            font-size:15px;
+
+            margin-bottom:25px;
+        }
+
+        .btn{
+
+            padding:14px 28px;
+
+            border:none;
+
+            border-radius:14px;
+
+            background:linear-gradient(to right,#ff2e2e,#b30000);
+
+            color:white;
+
+            font-size:16px;
+
+            cursor:pointer;
+
+            text-decoration:none;
+
+            display:inline-block;
+
+            transition:0.3s;
+        }
+
+        .btn:hover{
+
+            transform:scale(1.05);
+        }
+
+        .back-btn{
+
+    position:absolute;
+
+    top:20px;
+
+    left:20px;
+
+    padding:10px 20px;
+
+    border:none;
+
+    border-radius:10px;
+
+    background:#ff2e2e;
+
+    color:white;
+
+    cursor:pointer;
+
+    font-size:16px;
+}
+
+    </style>
+
+</head>
+
+<body>
+    <body>
+  <button
+    onclick="history.back()"
+    class="back-btn"
+>
+    ← Back
+</button>
+
+    <div class="container">
+
+        <h1>🍽️ Choose Your Experience</h1>
+
+        <p>
+            Select how you'd like to enjoy Saffron Flame today
+        </p>
+
+        <div class="option-container">
+
+            <div class="option-card">
+
+                <h2>🍴 Dine In</h2>
+
+                <p>
+                    Enjoy luxury ambience and reserve your dining table.
+                </p>
+
+                <a href="/dine-in/" class="btn">
+                    Explore Menu
+                </a>
+
+            </div>
+
+            <div class="option-card">
+
+                <h2>🚚 Online Delivery</h2>
+
+                <p>
+                    Order your favorite dishes directly to your doorstep.
+                </p>
+                
+                <a href="/delivery/?next=menu" class="btn">
+                    Continue
+                </a>
+                
+
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+</html>

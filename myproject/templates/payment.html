@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Google Pay | Saffron Flame</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+
+    min-height:100vh;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    background:
+    linear-gradient(rgba(0,0,0,0.75),rgba(0,0,0,0.85)),
+    url("https://images.unsplash.com/photo-1517248135467-4c7edcad34c4");
+
+    background-size:cover;
+    background-position:center;
+
+    color:white;
+}
+
+.payment-card{
+
+    width:100%;
+    max-width:450px;
+
+    background:rgba(255,255,255,0.08);
+
+    backdrop-filter:blur(15px);
+
+    border-radius:30px;
+
+    padding:40px;
+
+    text-align:center;
+
+    box-shadow:0 0 30px rgba(0,0,0,0.5);
+
+    border:1px solid rgba(255,255,255,0.08);
+}
+
+.logo{
+
+    font-size:55px;
+
+    margin-bottom:15px;
+}
+
+h1{
+
+    color:#4285F4;
+
+    margin-bottom:5px;
+}
+
+.subtitle{
+
+    color:#ccc;
+
+    margin-bottom:30px;
+}
+
+.amount{
+
+    font-size:42px;
+
+    font-weight:700;
+
+    color:#00e676;
+
+    margin-bottom:20px;
+}
+
+.merchant{
+
+    background:rgba(255,255,255,0.06);
+
+    padding:15px;
+
+    border-radius:15px;
+
+    margin-bottom:20px;
+}
+
+.merchant h3{
+
+    color:#ff4d4d;
+}
+
+.upi-box{
+
+    background:rgba(255,255,255,0.06);
+
+    padding:15px;
+
+    border-radius:15px;
+
+    margin-bottom:25px;
+}
+
+.upi-box p{
+
+    color:#ddd;
+}
+
+.secure{
+
+    color:#00e676;
+
+    margin-bottom:25px;
+
+    font-size:14px;
+}
+
+.pay-btn{
+
+    width:100%;
+
+    padding:16px;
+
+    border:none;
+
+    border-radius:15px;
+
+    background:#4285F4;
+
+    color:white;
+
+    font-size:18px;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:0.3s;
+}
+
+.pay-btn:hover{
+
+    transform:translateY(-3px);
+
+    box-shadow:0 0 20px rgba(66,133,244,0.5);
+}
+.back-btn{
+
+    position:absolute;
+
+    top:20px;
+
+    left:20px;
+
+    padding:10px 20px;
+
+    border:none;
+
+    border-radius:10px;
+
+    background:#ff2e2e;
+
+    color:white;
+
+    cursor:pointer;
+
+    font-size:16px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+    <button
+    onclick="history.back()"
+    class="back-btn"
+>
+    ← Back
+</button>
+
+<div class="payment-card">
+
+    <div class="logo">
+        💳
+    </div>
+
+    <h1>Google Pay</h1>
+
+    <p class="subtitle">
+        Secure UPI Payment
+    </p>
+
+    <div class="amount">
+        ₹{{ total }}
+    </div>
+
+    <div class="merchant">
+
+        <h3>Saffron Flame</h3>
+
+        <p>Premium Dining Experience</p>
+
+    </div>
+
+    <div class="upi-box">
+
+        <p>
+            saffronflame@okaxis
+        </p>
+
+    </div>
+
+    <div class="secure">
+        🔒 Secured by Google Pay
+    </div>
+
+    <form method="POST">
+
+        {% csrf_token %}
+
+        <button type="submit" class="pay-btn">
+            Pay Now
+        </button>
+
+    </form>
+
+</div>
+
+</body>
+</html>

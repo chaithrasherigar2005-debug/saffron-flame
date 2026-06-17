@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Saffron Flame Cart</title>
+
+    <!-- GOOGLE FONT -->
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- FONT AWESOME -->
+
+    <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+
+    <style>
+
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:'Poppins',sans-serif;
+        }
+
+        body{
+            background:
+            linear-gradient(rgba(0,0,0,0.88),rgba(0,0,0,0.9)),
+            url("https://images.unsplash.com/photo-1414235077428-338989a2e8c0");
+            background-size:cover;
+            background-position:center;
+            min-height:100vh;
+            color:white;
+            padding:40px 8%;
+        }
+
+        .cart-header{
+            text-align:center;
+            margin-bottom:50px;
+        }
+
+        .cart-header h1{
+            font-size:55px;
+            color:#ff3c3c;
+            margin-bottom:10px;
+            text-shadow:0 0 20px rgba(255,0,0,0.4);
+        }
+
+        .cart-header p{
+            color:#ccc;
+            font-size:18px;
+        }
+
+        .cart-container{
+            display:flex;
+            flex-direction:column;
+            gap:25px;
+        }
+
+        .cart-card{
+            background:rgba(28,28,28,0.92);
+            border:1px solid rgba(255,255,255,0.08);
+            border-radius:25px;
+            padding:25px;
+            display:flex;
+            align-items:center;
+            justify-content:space-between;
+            gap:20px;
+            transition:0.3s;
+            backdrop-filter:blur(10px);
+            box-shadow:0 0 20px rgba(255,0,0,0.08);
+        }
+
+        .cart-card:hover{
+            transform:translateY(-5px);
+            box-shadow:0 0 25px rgba(255,0,0,0.2);
+        }
+
+        .cart-left{
+            display:flex;
+            align-items:center;
+            gap:20px;
+        }
+
+        .cart-left img{
+            width:130px;
+            height:130px;
+            object-fit:cover;
+            border-radius:18px;
+            border:2px solid rgba(255,255,255,0.08);
+        }
+
+        .cart-info h2{
+            color:#ff4d4d;
+            font-size:28px;
+            margin-bottom:10px;
+        }
+
+        .cart-info p{
+            color:#ccc;
+            margin-bottom:8px;
+            font-size:16px;
+        }
+
+        .quantity{
+            display:inline-block;
+            background:#ff3c3c;
+            padding:7px 15px;
+            border-radius:10px;
+            font-size:14px;
+            font-weight:600;
+            margin-top:8px;
+        }
+
+        .price{
+            font-size:30px;
+            font-weight:700;
+            color:white;
+        }
+
+        .cart-summary{
+            margin-top:50px;
+            background:rgba(28,28,28,0.92);
+            padding:35px;
+            border-radius:25px;
+            border:1px solid rgba(255,255,255,0.08);
+            text-align:center;
+            box-shadow:0 0 20px rgba(255,0,0,0.12);
+        }
+
+        .cart-summary h1{
+            font-size:45px;
+            margin-bottom:25px;
+        }
+
+        .cart-summary span{
+            color:#ff3c3c;
+        }
+
+        .checkout-btn{
+            margin-top:20px;
+            padding:16px 35px;
+            border:none;
+            border-radius:14px;
+            background:linear-gradient(to right,#ff2e2e,#b30000);
+            color:white;
+            font-size:18px;
+            font-weight:600;
+            cursor:pointer;
+            transition:0.3s;
+            box-shadow:0 0 20px rgba(255,0,0,0.3);
+        }
+
+        .checkout-btn:hover{
+            transform:scale(1.05);
+            box-shadow:0 0 25px rgba(255,0,0,0.5);
+        }
+
+        .empty-cart{
+            text-align:center;
+            margin-top:100px;
+        }
+
+        .empty-cart i{
+            font-size:90px;
+            color:#ff3c3c;
+            margin-bottom:25px;
+        }
+
+        .empty-cart h2{
+            font-size:40px;
+            margin-bottom:15px;
+        }
+
+        .empty-cart p{
+            color:#bbb;
+            margin-bottom:30px;
+            font-size:18px;
+        }
+
+        .menu-btn{
+            padding:15px 30px;
+            background:#ff3c3c;
+            border:none;
+            border-radius:14px;
+            color:white;
+            font-size:17px;
+            cursor:pointer;
+            transition:0.3s;
+            text-decoration:none;
+            display:inline-block;
+        }
+
+        .menu-btn:hover{
+            transform:scale(1.05);
+        }
+
+        @media(max-width:768px){
+
+            .cart-card{
+                flex-direction:column;
+                text-align:center;
+            }
+
+            .cart-left{
+                flex-direction:column;
+            }
+
+            .cart-header h1{
+                font-size:40px;
+            }
+
+            .cart-summary h1{
+                font-size:32px;
+            }
+
+        }
+
+     .add-more-btn{
+    padding:16px 35px;
+    border:none;
+    border-radius:14px;
+    background:transparent;
+    border:2px solid #ff3c3c;
+    color:white;
+    font-size:18px;
+    font-weight:600;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.add-more-btn:hover{
+    background:#ff3c3c;
+    transform:scale(1.05);
+}   
+
+.right-section{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:15px;
+}
+
+.remove-btn{
+    padding:10px 22px;
+    border:none;
+    border-radius:10px;
+    background:#2a2a2a;
+    color:white;
+    cursor:pointer;
+    transition:0.3s;
+    border:1px solid rgba(255,255,255,0.1);
+    font-weight:600;
+}
+
+.remove-btn:hover{
+    background:#ff2e2e;
+    transform:scale(1.05);
+}
+
+.home-btn{
+
+    display:inline-block;
+
+    margin-top:20px;
+
+    padding:12px 25px;
+
+    background:linear-gradient(
+        to right,
+        #ff2e2e,
+        #b30000
+    );
+
+    color:white;
+
+    text-decoration:none;
+
+    border-radius:12px;
+
+    font-weight:600;
+
+    transition:0.3s;
+}
+
+.home-btn:hover{
+
+    transform:translateY(-2px);
+
+    box-shadow:
+    0 0 15px rgba(255,0,0,0.4);
+}
+    </style>
+
+</head>
+
+<body>
+
+    <a href="/" class="home-btn">
+
+    🏠 Back To Home
+
+</a>
+
+    <div class="cart-header">
+
+        <h1>🛒 Your Cart</h1>
+
+        <p>
+            Review your delicious selections before checkout
+        </p>
+
+    </div>
+
+    {% if cart_items %}
+
+    <div class="cart-container">
+
+        {% for cart in cart_items %}
+
+        <div class="cart-card">
+
+    <div class="cart-left">
+
+        <img src="{{ cart.item.image.url }}">
+
+        <!-- 🔥 REPLACE THIS PART -->
+        <div class="cart-info">
+
+            <h2 style="color:#ff4d4d;font-size:26px;margin-bottom:8px;">
+                {{ cart.item.name }}
+            </h2>
+
+            <p style="color:#ccc;margin-bottom:10px;">
+                {{ cart.item.description }}
+            </p>
+
+            <!-- QUANTITY CONTROLS -->
+            <div style="display:flex;align-items:center;gap:10px;font-size:16px;">
+
+                <a href="/decrease/{{ cart.id }}/"
+                   style="text-decoration:none;
+                          font-size:18px;
+                          width:28px;
+                          height:28px;
+                          display:flex;
+                          align-items:center;
+                          justify-content:center;
+                          border-radius:6px;
+                          background:#2a2a2a;
+                          color:white;">
+                    −
+                </a>
+
+                <span style="font-weight:600;">
+                    Qty: {{ cart.quantity }}
+                </span>
+
+                <a href="/increase/{{ cart.id }}/"
+                   style="text-decoration:none;
+                          font-size:18px;
+                          width:28px;
+                          height:28px;
+                          display:flex;
+                          align-items:center;
+                          justify-content:center;
+                          border-radius:6px;
+                          background:#2a2a2a;
+                          color:white;">
+                    +
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+                
+
+            
+            <div class="right-section">
+
+    <div class="price">
+        ₹{{ cart.total_price }}
+    </div>
+
+    <a href="/delete-cart/{{ cart.id }}/">
+
+        <button class=" remove-btn">
+             Remove
+        </button>
+
+    </a>
+
+</div>
+
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+    <div class="cart-summary">
+
+        <h1>
+            Total Amount:
+            <span>₹{{ total }}</span>
+        </h1>
+        <a href="/receipt/">
+        <button class="checkout-btn">
+            Proceed To Checkout
+        </button>
+        c</a>
+
+        <br><br>
+
+<a href="/menu/">
+
+    <button class="add-more-btn">
+        Add More Items
+    </button>
+
+</a>
+
+    </div>
+
+    {% else %}
+
+    <div class="empty-cart">
+
+        <i class="fa-solid fa-cart-shopping"></i>
+
+        <h2>Your Cart is Empty</h2>
+
+        <p>
+            Looks like you haven’t added anything delicious yet.
+        </p>
+
+        <a href="/menu/" class="menu-btn">
+            Explore Menu
+        </a>
+
+    </div>
+
+    {% endif %}
+
+</body>
+
+</html>

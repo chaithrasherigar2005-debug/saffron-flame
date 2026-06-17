@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Online Delivery</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:'Poppins',sans-serif;
+        }
+
+        body{
+            min-height:100vh;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+
+            background:
+            linear-gradient(rgba(0,0,0,0.8),rgba(0,0,0,0.85)),
+            url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4');
+
+            background-size:cover;
+            background-position:center;
+        }
+
+        .box{
+
+            width:100%;
+            max-width:500px;
+
+            background:rgba(20,20,20,0.8);
+
+            padding:40px;
+
+            border-radius:25px;
+
+            color:white;
+
+            backdrop-filter:blur(12px);
+        }
+
+        h1{
+            text-align:center;
+            margin-bottom:25px;
+            color:#ff4d4d;
+        }
+
+        textarea{
+
+            width:100%;
+            height:150px;
+
+            padding:15px;
+
+            border:none;
+
+            border-radius:14px;
+
+            outline:none;
+
+            resize:none;
+
+            margin-bottom:20px;
+        }
+
+        button{
+
+            width:100%;
+
+            padding:15px;
+
+            border:none;
+
+            border-radius:14px;
+
+            background:linear-gradient(to right,#ff2e2e,#b30000);
+
+            color:white;
+
+            font-size:18px;
+
+            cursor:pointer;
+        }
+
+        .input-box select{
+
+    width:100%;
+
+    padding:15px;
+
+    border:none;
+
+    border-radius:15px;
+
+    background:
+    rgba(255,255,255,0.12);
+
+    color:white;
+
+    font-size:15px;
+
+    transition:0.3s;
+
+    cursor:pointer;
+}
+
+.input-box select:focus{
+
+    border:1px solid #ff4d4d;
+
+    box-shadow:
+    0 0 12px rgba(255,77,77,0.5);
+
+    transform:scale(1.01);
+}
+
+.input-box input[readonly]{
+
+    background:
+    rgba(255,77,77,0.15);
+
+    color:#ffb3b3;
+
+    font-weight:600;
+
+    text-align:center;
+}
+
+.state-box{
+
+    width:100%;
+
+    padding:15px;
+
+    border:none;
+
+    border-radius:15px;
+
+    background:
+    rgba(255,255,255,0.12);
+
+    color:white;
+
+    font-size:15px;
+
+    font-weight:600;
+
+    text-align:center;
+}
+.input-box{
+
+    margin-bottom:20px;
+}
+.state-display{
+
+    width:100%;
+
+    padding:15px;
+
+    border-radius:15px;
+
+    background:rgba(255,255,255,0.12);
+
+    color:white;
+
+    font-size:16px;
+
+    font-weight:600;
+
+    text-align:center;
+
+    border:1px solid rgba(255,255,255,0.08);
+
+    margin-bottom:20px;
+}
+.input-box select option{
+
+    background:white;
+
+    color:black;
+}
+
+.back-btn{
+
+    position:absolute;
+
+    top:20px;
+
+    left:20px;
+
+    width:auto;
+
+    padding:10px 20px;
+
+    border:none;
+
+    border-radius:10px;
+
+    background:#ff2e2e;
+
+    color:white;
+
+    cursor:pointer;
+
+    z-index:1000;
+}
+    </style>
+
+</head>
+
+<body>
+
+    <button
+    onclick="history.back()"
+    class="back-btn"
+    >
+            ← Back
+        </button>
+    <div class="box">
+
+        <h1>📍 Delivery Address</h1>
+
+        <form method="POST">
+
+            {% csrf_token %}
+
+            <textarea
+                name="address"
+                placeholder="Enter your delivery address..."
+                required
+            ></textarea>
+
+            <div class="input-box">
+
+    <label>📍 Pincode</label>
+
+    <select name="pincode" required>
+
+        <option value="">
+            Select Delivery Pincode
+        </option>
+
+        <option value="576101">
+            576101
+        </option>
+
+        <option value="576102">
+            576102
+        </option>
+
+        <option value="576103">
+            576103 
+        </option>
+
+    </select>
+
+</div>
+
+<div class="input-box">
+
+    <label>🏙 City</label>
+
+    <select name="city" required>
+
+        <option value="">
+            Select City
+        </option>
+
+        <option value="Udupi">
+            Udupi
+        </option>
+
+        <option value="Manipal">
+            Manipal
+        </option>
+
+    </select>
+
+</div>
+
+<div class="input-box">
+
+    <label>🌏 State</label>
+
+    <input
+        type="text"
+        name="state"
+        value="Karnataka"
+        readonly
+        class="state-box"
+    >
+
+</div>
+
+            <button type="submit">
+                Save Address
+            </button>
+
+        </form>
+
+    </div>
+
+</body>
+</html>

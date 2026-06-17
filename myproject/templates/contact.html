@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Contact - Saffron Flame</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+body{
+    margin:0;
+    font-family:'Poppins',sans-serif;
+    background:#0d0d0d;
+    color:white;
+}
+
+/* HEADER STYLE (same vibe as home) */
+header{
+    padding:20px 8%;
+    background:rgba(0,0,0,0.6);
+    backdrop-filter:blur(12px);
+    border-bottom:1px solid rgba(255,255,255,0.1);
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.logo{
+    color:#ff3c3c;
+    font-size:28px;
+    font-weight:700;
+}
+
+/* HERO CONTACT SECTION */
+.contact-hero{
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:80px 20px;
+    background:
+    linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.8)),
+    url("https://images.unsplash.com/photo-1555396273-367ea4eb4db5");
+    background-size:cover;
+    background-position:center;
+}
+
+/* CARD */
+.contact-card{
+    width:100%;
+    max-width:700px;
+    background:rgba(20,20,20,0.85);
+    backdrop-filter:blur(10px);
+    border:1px solid rgba(255,255,255,0.1);
+    border-radius:25px;
+    padding:40px;
+    box-shadow:0 0 30px rgba(255,60,60,0.15);
+    animation:fadeIn 1s ease;
+}
+
+/* TITLE */
+.contact-card h1{
+    text-align:center;
+    color:#ff3c3c;
+    margin-bottom:25px;
+    font-size:40px;
+}
+
+/* INFO BOX */
+.info{
+    line-height:2;
+    font-size:17px;
+    color:#ddd;
+}
+
+.info span{
+    color:#ff3c3c;
+    font-weight:600;
+}
+
+/* HIGHLIGHT BOXES */
+.box{
+    background:#1a1a1a;
+    padding:15px 20px;
+    margin:12px 0;
+    border-radius:15px;
+    border:1px solid rgba(255,255,255,0.05);
+    transition:0.3s;
+}
+
+.box:hover{
+    transform:translateY(-5px);
+    box-shadow:0 0 15px rgba(255,60,60,0.2);
+}
+
+/* FOOTER TEXT */
+.footer{
+    text-align:center;
+    margin-top:25px;
+    color:#aaa;
+    font-size:14px;
+}
+
+/* BUTTON BACK */
+.back-btn{
+    display:inline-block;
+    margin-top:25px;
+    padding:12px 25px;
+    background:#ff3c3c;
+    color:white;
+    border-radius:12px;
+    text-decoration:none;
+    font-weight:600;
+    transition:0.3s;
+}
+
+.back-btn:hover{
+    transform:scale(1.05);
+}
+
+/* ANIMATION */
+@keyframes fadeIn{
+    from{opacity:0; transform:translateY(30px);}
+    to{opacity:1; transform:translateY(0);}
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">🍽️ Saffron Flame</div>
+</header>
+
+<section class="contact-hero">
+
+<div class="contact-card">
+
+    <h1>Contact Us</h1>
+
+    <div class="info">
+
+        <div class="box">
+            <span>🍽️ Restaurant:</span> Saffron Flame
+        </div>
+
+        <div class="box">
+            <span>📧 Email:</span> saffronflame@gmail.com
+        </div>
+
+        <div class="box">
+            <span>📞 Phone:</span> +91 9876543210
+        </div>
+
+        <div class="box">
+            <span>⏰ Open Daily:</span> 11:00 AM - 11:00 PM
+        </div>
+
+        <div class="box">
+            <span>📍 Location:</span> MG Road, Karnataka, India
+        </div>
+
+        <div class="box">
+            <span>ℹ️ About:</span>
+            Saffron Flame offers luxury dining with premium grills, elegant ambience, and seamless online reservations.
+        </div>
+
+        <div class="box">
+            <span>💬 Support:</span>
+            For bookings, events, or support — call or email us anytime.
+        </div>
+
+    </div>
+
+    <div style="text-align:center;">
+        <a href="/" class="back-btn">← Back to Home</a>
+    </div>
+
+    <div class="footer">
+        © 2026 Saffron Flame. All Rights Reserved.
+    </div>
+
+</div>
+
+</section>
+
+</body>
+</html>

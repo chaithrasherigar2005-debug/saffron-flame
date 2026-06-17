@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Saffron Flame Reservation</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:'Poppins',sans-serif;
+    }
+
+    body{
+      min-height:100vh;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      padding:30px;
+      background:
+      linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.8)),
+      url("https://images.unsplash.com/photo-1517248135467-4c7edcad34c4");
+      background-size:cover;
+      background-position:center;
+    }
+
+    .reservation-box{
+      width:100%;
+      max-width:550px;
+      background:rgba(255,255,255,0.08);
+      backdrop-filter:blur(14px);
+      border:1px solid rgba(255,255,255,0.1);
+      padding:40px;
+      border-radius:25px;
+      box-shadow:0 10px 35px rgba(0,0,0,0.4);
+      color:white;
+      animation:fadeIn 1s ease;
+    }
+
+    .reservation-box h1{
+      text-align:center;
+      font-size:40px;
+      margin-bottom:10px;
+      color:#ff4d4d;
+      text-shadow:0 0 15px rgba(255,0,0,0.5);
+    }
+
+    .reservation-box p{
+      text-align:center;
+      color:#ddd;
+      margin-bottom:35px;
+      font-size:16px;
+      line-height:1.6;
+    }
+
+    .input-box{
+      margin-bottom:22px;
+    }
+
+    .input-box label{
+      display:block;
+      margin-bottom:8px;
+      font-weight:600;
+      color:#fff;
+    }
+
+    .input-box input,
+    .input-box select,
+    .input-box textarea{
+      width:100%;
+      padding:15px;
+      border:none;
+      border-radius:14px;
+      outline:none;
+      background:rgba(255,255,255,0.12);
+      color:white;
+      font-size:15px;
+      transition:0.3s;
+    }
+
+    .input-box input::placeholder,
+    .input-box textarea::placeholder{
+      color:#ddd;
+    }
+
+    .input-box input:focus,
+    .input-box select:focus,
+    .input-box textarea:focus{
+      border:1px solid #ff4d4d;
+      box-shadow:0 0 12px rgba(255,77,77,0.5);
+      transform:scale(1.01);
+    }
+
+    select option{
+      color:black;
+    }
+
+    .btn{
+      width:100%;
+      padding:16px;
+      border:none;
+      border-radius:14px;
+      background:linear-gradient(to right,#ff2e2e,#b30000);
+      color:white;
+      font-size:18px;
+      font-weight:600;
+      cursor:pointer;
+      transition:0.3s;
+      box-shadow:0 0 20px rgba(255,0,0,0.3);
+    }
+
+    .btn:hover{
+      transform:translateY(-3px);
+      box-shadow:0 0 25px rgba(255,0,0,0.5);
+    }
+
+    .seat-btn{
+      margin-bottom:22px;
+      text-decoration:none;
+      display:block;
+    }
+
+    .top-icon{
+      text-align:center;
+      font-size:55px;
+      margin-bottom:10px;
+    }
+
+    .divider{
+      width:80px;
+      height:4px;
+      background:#ff4d4d;
+      margin:0 auto 30px auto;
+      border-radius:10px;
+    }
+
+    .selected-seat-box{
+      background:rgba(255,255,255,0.08);
+      border:1px solid rgba(255,255,255,0.1);
+      padding:18px;
+      border-radius:14px;
+      margin-bottom:22px;
+      text-align:center;
+    }
+
+    .selected-seat-box h3{
+      color:#ff4d4d;
+      margin-bottom:10px;
+      font-size:20px;
+    }
+
+    .selected-seat-box p{
+      margin:0;
+      font-size:18px;
+      font-weight:600;
+      color:white;
+    }
+
+    @keyframes fadeIn{
+
+      from{
+        opacity:0;
+        transform:translateY(30px);
+      }
+
+      to{
+        opacity:1;
+        transform:translateY(0);
+      }
+
+    }
+
+    @media(max-width:600px){
+
+      .reservation-box{
+        padding:30px 22px;
+      }
+
+      .reservation-box h1{
+        font-size:30px;
+      }
+
+    }
+
+    .back-btn{
+
+    position:absolute;
+
+    top:20px;
+
+    left:20px;
+
+    padding:10px 20px;
+
+    border:none;
+
+    border-radius:10px;
+
+    background:#ff2e2e;
+
+    color:white;
+
+    cursor:pointer;
+
+    font-size:16px;
+}
+
+  </style>
+</head>
+
+<body>
+  <button
+    onclick="history.back()"
+    class="back-btn"
+>
+    ← Back
+</button>
+
+  <div class="reservation-box">
+
+    <div class="top-icon">
+      🍽️
+    </div>
+
+    <h1>Saffron Flame</h1>
+
+    <div class="divider"></div>
+
+    <p>
+      Reserve your dining experience with luxury ambience,
+      delicious cuisine, and premium seating.
+    </p>
+
+    <form method="POST">
+      {% csrf_token %}
+
+      <div class="input-box">
+
+        <label>Reservation Date</label>
+
+        <input 
+          type="date"
+          id="date"
+          name="reservation_date"
+          min="{{ today }}"
+          required
+        >
+
+      </div>
+
+      <div class="input-box">
+
+        <label>Reservation Time</label>
+
+        <input 
+          type="time"
+          id="time"
+          name="reservation_time"
+          required
+        >
+
+      </div>
+
+      <div class="input-box">
+
+        <label>Number of Guests</label>
+
+        <select id="guests" name="guests" required>
+
+          <option value="">Select Guests</option>
+
+          <option value="1">1 Guest</option>
+
+          <option value="2">2 Guests</option>
+
+          <option value="3">3 Guests</option>
+
+          <option value="4">4 Guests</option>
+
+          <option value="5">5 Guests</option>
+        </select>
+
+      </div>
+
+      <!-- CHOOSE SEAT BUTTON -->
+
+      <a href="/seat-selection/" class="seat-btn">
+
+        <button 
+          type="button"
+          class="btn"
+        >
+          Choose Your Seat
+        </button>
+
+      </a>
+
+      <!-- SELECTED SEAT DISPLAY -->
+
+      <!-- SELECTED SEAT DISPLAY -->
+
+<div 
+  class="selected-seat-box"
+  id="seatBox"
+  style="display:none;"
+>
+
+  <h3>Selected Seat</h3>
+
+  <p id="selectedSeatDisplay"></p>
+
+</div>
+
+<input
+    type="hidden"
+    name="seat_number"
+    id="seatNumber"
+>
+      <div class="input-box">
+
+        <label>Special Request</label>
+
+        <textarea 
+          rows="4"
+          id="request"
+          placeholder="Birthday surprise, window seat, decorations..."
+        ></textarea>
+
+      </div>
+
+      <button 
+        class="btn"
+        type="submit"
+      >
+          Reserve Table
+      </button>
+    </form>
+
+  </div>
+
+<script>
+
+  // ---------- DATE VALIDATION ----------
+
+const today = new Date().toISOString().split("T")[0];
+
+document.getElementById("date").setAttribute(
+    "min",
+    today
+);
+
+// ---------- TIME VALIDATION ----------
+
+document.getElementById("time").setAttribute(
+    "min",
+    "12:00"
+);
+
+document.getElementById("time").setAttribute(
+    "max",
+    "22:00"
+);
+
+// ---------- SAVE DATA ----------
+
+document.getElementById("date").addEventListener("change", function(){
+    sessionStorage.setItem("date", this.value);
+});
+
+document.getElementById("time").addEventListener("change", function(){
+    sessionStorage.setItem("time", this.value);
+});
+
+document.getElementById("guests").addEventListener("change", function(){
+    sessionStorage.setItem("guests", this.value);
+});
+
+document.getElementById("request").addEventListener("keyup", function(){
+    sessionStorage.setItem("request", this.value);
+});
+
+
+// ---------- LOAD DATA ----------
+document.getElementById("date").value =
+sessionStorage.getItem("date") || "";
+
+document.getElementById("time").value =
+sessionStorage.getItem("time") || "";
+
+document.getElementById("guests").value =
+sessionStorage.getItem("guests") || "";
+
+document.getElementById("request").value =
+sessionStorage.getItem("request") || "";
+
+
+// ---------- SEAT DISPLAY ----------
+
+const savedSeat =sessionStorage.getItem("selectedSeat");
+
+if(savedSeat){
+
+    document.getElementById("seatNumber").value = savedSeat;
+
+    document.getElementById("seatBox").style.display = "block";
+
+    document.getElementById("selectedSeatDisplay").innerText = savedSeat;
+
+}else{
+
+    document.getElementById("seatBox").style.display = "none";
+
+}
+
+// CLEAR FORM AFTER SUCCESSFUL RESERVATION
+
+if(window.location.pathname === "/"){
+
+    sessionStorage.removeItem("date");
+    sessionStorage.removeItem("time");
+    sessionStorage.removeItem("guests");
+    sessionStorage.removeItem("request");
+    sessionStorage.removeItem("selectedSeat");
+
+}
+
+</script>
+
+</body>
+</html>
+</body>
+</html>
